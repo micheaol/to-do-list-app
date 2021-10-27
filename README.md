@@ -2,6 +2,8 @@
 
 This is application will allow you to add, edit, and remove your daily tasks.
 
+![alt text](https://github.com/micheaol/Awesome-books/blob/style-core-elements/assets/images/project-img.PNG)
+
 
 Additional description about the project and its features.
 
