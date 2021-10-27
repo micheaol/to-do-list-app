@@ -45,11 +45,17 @@ input {
 }
 
 #enter-tasks {
-  max-width: 90%;
+  width: 85%;
   border: none;
   padding: 15px;
   font-family: 'Roboto', sans-serif;
   font-size: larger;
+}
+
+#enter-icon {
+  position: absolute;
+  right: 8%;
+  font-size: 200%;
 }
 
 #clear-all {
@@ -70,6 +76,11 @@ input {
 
 .check-box {
   padding: 15px;
+}
+
+#add-task-form {
+  width: 100%;
+  position: relative;
 }
 
 @media screen and (min-width: 765px) {

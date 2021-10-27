@@ -8,17 +8,15 @@ function createMyElement(para) {
   return document.createElement(para);
 }
 
-
-function addtoLocal() {
+export function addtoLocal() {
   tasks.forEach((elem) => {
     const key = elem.index;
     localStorage.setItem(key, JSON.stringify(elem));
   });
 }
 
-addtoLocal();
-
-function getTasks() {
+function printTasks() {
+  addtoLocal();
   Object.keys(localStorage).forEach((key) => {
     const data = JSON.parse(localStorage.getItem(key));
     if (data) {
@@ -39,22 +37,30 @@ function getTasks() {
 
       checkBox.addEventListener('change', (e) => {
         if (e.target.checked) {
-            data.completed = true;
-           li.classList.toggle('over-line');
-           console.log(data)
-         
-          if (e.target.parentNode.classList === 'over-line') {
-            
-            console.log(data)
-          }
+          data.completed = true;
+          li.classList.add('over-line');
+          const key = data.index;
+          localStorage.setItem(key, JSON.stringify(data));
+          li.classList.add('over-line');
         } else {
+          data.completed = false;
+          li.classList.remove('over-line');
+          const key = data.index;
+          localStorage.setItem(key, JSON.stringify(data));
           li.classList.remove('over-line');
         }
       });
-
-      ul.appendChild(li);
+      if (data.completed === true) {
+        li.classList.add('over-line');
+        checkBox.checked = true;
+        ul.prepend(li);
+      } else {
+        li.classList.remove('over-line');
+        checkBox.checked = false;
+        ul.prepend(li);
+      }
     }
   });
 }
 
-export default getTasks;
+export default printTasks;
