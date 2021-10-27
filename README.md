@@ -2,7 +2,7 @@
 
 This is application will allow you to add, edit, and remove your daily tasks.
 
-![alt text](https://github.com/micheaol/to-do-list-app/blob/to-do-tasks/src/img.PNG)
+![alt text](https://github.com/micheaol/to-do-list-app/blob/interactive-list/src/img.PNG)
 
 
 Additional description about the project and its features.
@@ -32,6 +32,8 @@ To get a local copy up and running follow these simple example steps.
     -npm install
     -Clone the repository to your local machine.
     -npm install webpack webpack-cli --save-dev
+    -run npm start- To start the app
+    -Enter the tasks and click the icon to add.
 
 
 ## Authors
