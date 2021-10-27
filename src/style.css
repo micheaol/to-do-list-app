@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  border: 0.025px solid rgb(231, 222, 222);
+  box-shadow: 2px 3px beige;
+}
+
+#root h1 {
+  border-bottom: 0.025px solid rgb(231, 222, 222);
+  padding-bottom: 8px;
+  padding-left: 2%;
+}
+
+#inner-tasks {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid rgb(231, 222, 222);
+  padding: 20px 0;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: medium;
+  width: 100%;
+  border-left: none;
+  border-right: none;
+}
+
+input {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+#enter-tasks {
+  max-width: 90%;
+  border: none;
+  padding: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-size: larger;
+}
+
+#clear-all {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.dot-line {
+  position: absolute;
+  right: 8%;
+  top: 35%;
+}
+
+#root h1::after {
+  content: '\1F5D8';
+  margin-left: 38%;
+}
+
+.check-box {
+  padding: 15px;
+}
+
+@media screen and (min-width: 765px) {
+  #root {
+    max-width: 55%;
+  }
+
+  #root h1::after {
+    margin-left: 62%;
+  }
+}
