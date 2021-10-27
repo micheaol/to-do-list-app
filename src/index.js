@@ -44,6 +44,7 @@ function getTasks() {
 
     const checkBox = createMyElement('input');
     checkBox.type = 'checkbox';
+    checkBox.className = 'check-box'
     li.prepend(checkBox);
 
     const dots = createMyElement('span');
