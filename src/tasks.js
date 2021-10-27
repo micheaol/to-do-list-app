@@ -8,7 +8,7 @@ class UserTask {
   constructor(description) {
     this.description = description;
     this.completed = false;
-    this.index = localStorage.length;
+    this.index = localStorage.length + 1;
   }
 }
 
@@ -24,7 +24,7 @@ function getUserData() {
   if (enterTasks.value.length === 0) {
     enterTasks.placeholder = 'Your task can not be EMPTY......';
   } else {
-    newTask.index = enterTasks.value.length;
+    // newTask.index = enterTasks.value.length;
     tasks.push(newTask);
     addtoLocal();
     window.location.reload();
