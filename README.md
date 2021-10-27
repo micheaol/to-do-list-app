@@ -19,6 +19,21 @@ Additional description about the project and its features.
     -CSS
     -JS
 
+To get a local copy up and running follow these simple example steps.
+                
+   
+## Prerequisites 
+
+## Major requirement
+    -You must have Node.js install on your local machine
+    -You must know the basic of Javascrit, CSS, and HTML
+    
+## Setup
+    -npm install
+    -Clone the repository to your local machine.
+    -npm install webpack webpack-cli --save-dev
+    -run npm start- To start the app
+    -Enter the tasks and click the icon to add.
 
 
 ## Authors
