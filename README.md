@@ -20,13 +20,18 @@ Additional description about the project and its features.
     -JS
 
 To get a local copy up and running follow these simple example steps.
-
-Prerequisites : - You must have Node.js install on your local machine
-                - You must know the basic of Javascrit, CSS, and HTML
                 
-Setup : Clone the repository to your local machine.
-      - npm install
-      - npm install webpack webpack-cli --save-dev
+   
+## Prerequisites 
+
+- Major requirement
+    -You must have Node.js install on your local machine
+    -You must know the basic of Javascrit, CSS, and HTML
+    
+- Setup
+    -npm install
+    -Clone the repository to your local machine.
+    -npm install webpack webpack-cli --save-dev
 
 
 ## Authors
