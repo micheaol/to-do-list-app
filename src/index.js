@@ -8,7 +8,7 @@ function createMyElement(para) {
   return document.createElement(para);
 }
 
-let tasks = [
+const tasks = [
   {
     description: 'I want to go to the gym on Saturday',
     completed: true,
@@ -44,13 +44,13 @@ function getTasks() {
 
     const checkBox = createMyElement('input');
     checkBox.type = 'checkbox';
-    checkBox.className = 'check-box'
+    checkBox.className = 'check-box';
     li.prepend(checkBox);
 
     const dots = createMyElement('span');
     dots.innerHTML = '⋮';
-    dots.className = 'dot-line'
-    li.appendChild(dots)
+    dots.className = 'dot-line';
+    li.appendChild(dots);
 
     ul.appendChild(li);
   });
