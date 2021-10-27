@@ -7,7 +7,7 @@ module.exports = {
     main: path.resolve(__dirname, './src/index.js'),
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, ' ./dist'),
     filename: 'index_bundle.js',
   },
   module: {
@@ -21,6 +21,7 @@ module.exports = {
   devServer: {
     static: './dist',
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',

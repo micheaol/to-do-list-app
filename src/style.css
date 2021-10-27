@@ -81,3 +81,7 @@ input {
     margin-left: 62%;
   }
 }
+
+.over-line {
+  text-decoration: line-through;
+}
