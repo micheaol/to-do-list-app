@@ -14,57 +14,30 @@ function changeToBin(e) {
   }
 }
 
-//function to delete with three-dots
-
-threeDotLine.forEach((dot) => {
-  dot.addEventListener('click', (e) => {
-    
-    if (e.target.parentNode.className === 'over-line') {
-      e.target.parentNode.remove();
-    }
-    // if (e.target.previousSibling.contentEditable === true) {
-    //   console.log(e.target.previousSibling.contentEditable);
-    //   e.target.previousSibling.contentEditable = 'false';
-    //   console.log(data)
-    // }else{
-    //   e.target.previousSibling.contentEditable = 'true';
-    // }
-
-    // Object.keys(localStorage).forEach((key) => {
-    //   if (key) {
-    //     const data = JSON.parse(localStorage.getItem(key));
-    //     if (data) {
-    //      console.log(e.target.parentNode)
-    //     }
-    //   }
-    // });
-  });
-});
-
-//function to edit the description:
-// function editTaskDesc() {
-//   Object.keys(localStorage).forEach((key) => {
-//     if (key) {
-//       const data = JSON.parse(localStorage.getItem(key));
-//       if (data) {
-//         console.log(data)
-//       }
-//     }
-//   });
-// }
-
 // function to deleteAll selected tasks:
 function deleteSelectedTasks(e) {
   Object.keys(localStorage).forEach((key) => {
     if (key) {
       const dataDele = JSON.parse(localStorage.getItem(key));
       if (dataDele.completed === true) {
-        let key = dataDele.index;
+        const key = dataDele.description.length;
         localStorage.removeItem(key);
       }
     }
   });
+  window.location.reload();
 }
+
+//function to delete with three-dots
+
+threeDotLine.forEach((dot) => {
+  dot.addEventListener('click', (e) => {
+    if (e.target.parentNode.className === 'over-line') {
+      e.target.parentNode.remove();
+      deleteSelectedTasks();
+    }
+  });
+});
 
 deleteAllTasks.addEventListener('click', deleteSelectedTasks);
 

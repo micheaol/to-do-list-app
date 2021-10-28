@@ -8,7 +8,7 @@ class UserTask {
   constructor(description) {
     this.description = description;
     this.completed = false;
-    this.index = tasks.length;
+    this.index = tasks.length + 1;
   }
 }
 

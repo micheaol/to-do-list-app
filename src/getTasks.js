@@ -13,6 +13,7 @@ export function addtoLocal() {
   tasks.forEach((elem) => {
     const key = elem.description.length;
     localStorage.setItem(key, JSON.stringify(elem));
+    
   });
 }
 
@@ -58,6 +59,7 @@ function printTasks() {
         if (data.completed === true) {
           li.classList.add('over-line');
           checkBox.checked = true;
+          dots.innerHTML = '&#128465;';
           ul.prepend(li);
         } else {
           li.classList.remove('over-line');
