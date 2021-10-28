@@ -5,19 +5,12 @@ const editTable = document.querySelector('.span-desc');
 // function to edit the description:
 
 function editTaskDesc(e) {
-  if (!editTable.isContentEditable) {
-    editTable.contentEditable = 'true';
-    threeDotLine.forEach((saveBtn) => {
-      saveBtn.innerHTML = '&#128190;';
-    });
-  } else {
-    editTable.contentEditable = 'false';
-    threeDotLine.forEach((saveBtn) => {
-      saveBtn.innerHTML = '&#128190;';
-    });
-  }
-  //   let newTaskValue = e.target.previousSibling.innerHTML;
-  console.log(editTable);
+  e.target.previousSibling.contentEditable = 'true';
+  console.log( e.target.previousSibling.innerHTML.length);
+
+  e.target.previousSibling.innerHTML = 'test'
+  console.log(editTable.textContent)
+
 }
 
 threeDotLine.forEach((editDot) => {
