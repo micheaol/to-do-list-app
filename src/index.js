@@ -1,4 +1,5 @@
 import './style.css';
-import printTasks from './getTasks.js';
+import interact from './interact.js'
+// import printTasks from './getTasks.js';
 
-printTasks();
+// printTasks();

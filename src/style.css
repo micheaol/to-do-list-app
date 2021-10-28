@@ -67,6 +67,8 @@ input {
   position: absolute;
   right: 8%;
   top: 35%;
+  font-size: 125%;
+  cursor: pointer;
 }
 
 #root h1::after {
