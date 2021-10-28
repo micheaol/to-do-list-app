@@ -8,7 +8,7 @@ class UserTask {
   constructor(description) {
     this.description = description;
     this.completed = false;
-    this.index = localStorage.length + 1;
+    this.index = tasks.length;
   }
 }
 
@@ -27,7 +27,7 @@ function getUserData() {
     // newTask.index = enterTasks.value.length;
     tasks.push(newTask);
     addtoLocal();
-    window.location.reload();
+    // window.location.reload();
   }
 }
 

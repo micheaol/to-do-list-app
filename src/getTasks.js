@@ -66,4 +66,6 @@ function printTasks() {
   });
 }
 
+// printTasks();
+
 export default printTasks;

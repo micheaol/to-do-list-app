@@ -61,6 +61,7 @@ input {
 #clear-all {
   text-align: center;
   font-family: 'Lato', sans-serif;
+  cursor: pointer;
 }
 
 .dot-line {
@@ -71,9 +72,9 @@ input {
   cursor: pointer;
 }
 
-#root h1::after {
-  content: '\1F5D8';
-  margin-left: 38%;
+#reload-icon {
+  margin-left: 35%;
+  cursor: pointer;
 }
 
 .check-box {
@@ -90,8 +91,8 @@ input {
     max-width: 55%;
   }
 
-  #root h1::after {
-    margin-left: 62%;
+  #reload-icon {
+    margin-left: 60%;
   }
 }
 
