@@ -56,6 +56,7 @@ input {
   position: absolute;
   right: 8%;
   font-size: 200%;
+  cursor: pointer;
 }
 
 #clear-all {
@@ -64,6 +65,11 @@ input {
   cursor: pointer;
 }
 
+.span-desc {
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .dot-line {
   position: absolute;
   right: 8%;

@@ -7,9 +7,10 @@ const deleteAllTasks = document.querySelector('#clear-all');
 
 function changeToBin(e) {
   if (e.target.parentNode.className === 'over-line') {
-    e.target.nextElementSibling.innerHTML = '&#128465;';
+    e.target.parentNode.lastChild.innerHTML = '&#128465;';
+    // console.log(e.target.parentNode.lastChild)
   } else {
-    e.target.nextElementSibling.innerHTML = '&#8942;';
+    e.target.parentNode.lastChild.innerHTML = '&#8942;';
   }
 }
 
@@ -17,11 +18,42 @@ function changeToBin(e) {
 
 threeDotLine.forEach((dot) => {
   dot.addEventListener('click', (e) => {
-    e.target.parentNode.remove();
+    
+    if (e.target.parentNode.className === 'over-line') {
+      e.target.parentNode.remove();
+    }
+    // if (e.target.previousSibling.contentEditable === true) {
+    //   console.log(e.target.previousSibling.contentEditable);
+    //   e.target.previousSibling.contentEditable = 'false';
+    //   console.log(data)
+    // }else{
+    //   e.target.previousSibling.contentEditable = 'true';
+    // }
+
+    // Object.keys(localStorage).forEach((key) => {
+    //   if (key) {
+    //     const data = JSON.parse(localStorage.getItem(key));
+    //     if (data) {
+    //      console.log(e.target.parentNode)
+    //     }
+    //   }
+    // });
   });
 });
 
-//function to deleteAll selected tasks:
+//function to edit the description:
+// function editTaskDesc() {
+//   Object.keys(localStorage).forEach((key) => {
+//     if (key) {
+//       const data = JSON.parse(localStorage.getItem(key));
+//       if (data) {
+//         console.log(data)
+//       }
+//     }
+//   });
+// }
+
+// function to deleteAll selected tasks:
 function deleteSelectedTasks(e) {
   Object.keys(localStorage).forEach((key) => {
     if (key) {

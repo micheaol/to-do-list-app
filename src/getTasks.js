@@ -11,7 +11,7 @@ function createMyElement(para) {
 
 export function addtoLocal() {
   tasks.forEach((elem) => {
-    const key = elem.index;
+    const key = elem.description.length;
     localStorage.setItem(key, JSON.stringify(elem));
   });
 }
@@ -23,7 +23,10 @@ function printTasks() {
       const data = JSON.parse(localStorage.getItem(key));
       if (data) {
         const li = createMyElement('li');
-        li.innerHTML = data.description;
+        const spanDec = createMyElement('span');
+        spanDec.innerHTML = data.description;
+        spanDec.className = 'span-desc'
+        li.appendChild(spanDec);
         const ul = getMyElement('#inner-tasks');
 
         const checkBox = createMyElement('input');
@@ -41,13 +44,13 @@ function printTasks() {
           if (e.target.checked) {
             data.completed = true;
             li.classList.add('over-line');
-            const key = data.index;
+            const key = data.description.length;
             localStorage.setItem(key, JSON.stringify(data));
             li.classList.add('over-line');
           } else {
             data.completed = false;
             li.classList.remove('over-line');
-            const key = data.index;
+            const key = data.description.length;
             localStorage.setItem(key, JSON.stringify(data));
             li.classList.remove('over-line');
           }
@@ -61,6 +64,7 @@ function printTasks() {
           checkBox.checked = false;
           ul.prepend(li);
         }
+        
       }
     }
   });
