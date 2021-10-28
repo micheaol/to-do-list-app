@@ -28,6 +28,7 @@ function getUserData() {
     tasks.push(newTask);
     addtoLocal();
     // window.location.reload();
+    location.replace(location.href.split('#')[0]);
   }
 }
 
