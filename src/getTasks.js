@@ -9,16 +9,8 @@ function createMyElement(para) {
   return document.createElement(para);
 }
 
-export function addtoLocal() {
-  tasks.forEach((elem) => {
-    const key = elem.description.length;
-    localStorage.setItem(key, JSON.stringify(elem));
-    
-  });
-}
-
 function printTasks() {
-  addtoLocal();
+ 
   Object.keys(localStorage).forEach((key) => {
     if (key) {
       const data = JSON.parse(localStorage.getItem(key));

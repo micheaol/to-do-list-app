@@ -1,6 +1,6 @@
 import printTasks from './getTasks.js';
 
-printTasks();
+// printTasks();
 const threeDotLine = document.querySelectorAll('.dot-line');
 const taskCheckBox = document.querySelectorAll('.check-box');
 const deleteAllTasks = document.querySelector('#clear-all');

@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 
-import { addtoLocal } from './getTasks.js';
+import printTasks from './getTasks.js';
+import addtoLocal from './addToLocal';
 
 const tasks = [];
 
@@ -29,6 +30,7 @@ function getUserData() {
     addtoLocal();
     // window.location.reload();
   }
+  printTasks()
 }
 
 enterIcon.addEventListener('click', getUserData);
