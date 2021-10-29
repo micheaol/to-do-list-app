@@ -41,7 +41,7 @@ function showToUi() {
                     dots.innerHTML = '&#x1F4BE;';
                     spanDec.contentEditable = 'true';
                     spanDec.addEventListener('input', () => {
-                      task.description = spanDec.innerHTML;
+                      task.description = spanDec.textContent;
                       localStorage.setItem('tasks', JSON.stringify(tasks));
                     });
                   } else {
