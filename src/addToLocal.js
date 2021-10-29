@@ -1,14 +1,7 @@
-import tasks from "./tasks.js";
-import printTasks from "./getTasks.js";
+import tasks from './tasks.js';
 
+function addtoLocal() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
- function addtoLocal() {
-    // tasks.forEach((elem) => {
-    //   const key = tasks.length;
-    //   localStorage.setItem(key, JSON.stringify(elem));
-    // });
-    // // printTasks()
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
-
-  export default addtoLocal;
+export default addtoLocal;

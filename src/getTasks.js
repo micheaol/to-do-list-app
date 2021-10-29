@@ -1,8 +1,6 @@
-/* eslint-disable import/no-cycle */
-// import tasks from './tasks.js';
 import addtoLocal from './addToLocal.js';
 
-import tasks from './tasks';
+import tasks from './tasks.js';
 
 function getMyElement(para) {
   return document.querySelector(para);
@@ -12,7 +10,6 @@ function createMyElement(para) {
   return document.createElement(para);
 }
 
-const enterTaskBtn = getMyElement('#enter-icon');
 const enterTaskInput = getMyElement('#enter-tasks');
 const taskForm = getMyElement('#add-task-form');
 
@@ -67,14 +64,12 @@ function printTasks(e) {
             localStorage.setItem('tasks', JSON.stringify(tasks));
             dots.addEventListener('click', () => {
               dots.innerHTML = '&#128465;';
-              
+
               if (task.completed === true) {
-                let conIndex = tasks.indexOf(task)
-                tasks.splice(conIndex, 1)
+                let conIndex = tasks.indexOf(task);
+                tasks.splice(conIndex, 1);
                 e.target.parentNode.remove();
                 localStorage.setItem('tasks', JSON.stringify(tasks));
-
-               
               }
             });
           } else {
@@ -86,17 +81,13 @@ function printTasks(e) {
         }
       });
     }
-    
   });
 
   ul.appendChild(li);
-  // console.log(tasks)
-  
+
   addtoLocal();
 }
 
 taskForm.addEventListener('submit', printTasks);
-
-// printTasks();
 
 export default printTasks;

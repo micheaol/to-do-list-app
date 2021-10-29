@@ -1,7 +1,4 @@
-/* eslint-disable import/no-cycle */
 
-import printTasks from './getTasks.js';
-import addtoLocal from './addToLocal';
 
 const tasks = [];
 
@@ -18,7 +15,6 @@ function getMyElement(para) {
 }
 
 const enterTasks = getMyElement('#enter-tasks');
-const enterTasksForm = getMyElement('#add-task-form')
 const enterIcon = getMyElement('#enter-icon');
 
 function getUserData(e) {
@@ -27,15 +23,10 @@ function getUserData(e) {
   if (enterTasks.value.length === 0) {
     enterTasks.placeholder = 'Your task can not be EMPTY......';
   } else {
-    // newTask.index = enterTasks.value.length;
     tasks.push(newTask);
-
-    // window.location.reload();
   }
-  // printTasks()
 }
 
 enterIcon.addEventListener('click', getUserData);
-// enterTasksForm.addEventListener('submit', getUserData)
 
 export default tasks;
