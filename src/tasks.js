@@ -1,5 +1,3 @@
-
-
 const tasks = [];
 
 class UserTask {
@@ -17,7 +15,7 @@ function getMyElement(para) {
 const enterTasks = getMyElement('#enter-tasks');
 const enterIcon = getMyElement('#enter-icon');
 
-function getUserData(e) {
+function getUserData() {
   // e.preventDefault();
   const newTask = new UserTask(enterTasks.value);
   if (enterTasks.value.length === 0) {

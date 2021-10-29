@@ -33,7 +33,7 @@ function printTasks(e) {
   dots.className = 'dot-line';
   li.appendChild(dots);
 
-  dots.addEventListener('click', (e) => {
+  dots.addEventListener('click', () => {
     if (tasks.length > 0) {
       tasks.map((task) => {
         if (task.description === spanDec.innerHTML) {
@@ -49,6 +49,7 @@ function printTasks(e) {
             spanDec.contentEditable = 'false';
           }
         }
+        return task;
       });
     }
   });
@@ -64,12 +65,14 @@ function printTasks(e) {
             localStorage.setItem('tasks', JSON.stringify(tasks));
             dots.addEventListener('click', () => {
               dots.innerHTML = '&#128465;';
-
               if (task.completed === true) {
-                let conIndex = tasks.indexOf(task);
+                const conIndex = tasks.indexOf(task);
                 tasks.splice(conIndex, 1);
                 e.target.parentNode.remove();
-                localStorage.setItem('tasks', JSON.stringify(tasks));
+                tasks.forEach((task, i) => {
+                  task.index = i + 1;
+                  localStorage.setItem('tasks', JSON.stringify(tasks));
+                });
               }
             });
           } else {
@@ -79,6 +82,7 @@ function printTasks(e) {
             localStorage.setItem('tasks', JSON.stringify(tasks));
           }
         }
+        return task;
       });
     }
   });
