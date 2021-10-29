@@ -1,4 +1,5 @@
-/* eslint-disable import/no-cycle */
+import addtoLocal from './addToLocal.js';
+
 import tasks from './tasks.js';
 
 function getMyElement(para) {
@@ -9,61 +10,88 @@ function createMyElement(para) {
   return document.createElement(para);
 }
 
-export function addtoLocal() {
-  tasks.forEach((elem) => {
-    const key = elem.index;
-    localStorage.setItem(key, JSON.stringify(elem));
-  });
-}
+const enterTaskInput = getMyElement('#enter-tasks');
+const taskForm = getMyElement('#add-task-form');
 
-function printTasks() {
-  addtoLocal();
-  Object.keys(localStorage).forEach((key) => {
-    if (key) {
-      const data = JSON.parse(localStorage.getItem(key));
-      if (data) {
-        const li = createMyElement('li');
-        li.innerHTML = data.description;
-        const ul = getMyElement('#inner-tasks');
+function printTasks(e) {
+  e.preventDefault();
+  const li = createMyElement('li');
+  const spanDec = createMyElement('span');
+  spanDec.innerHTML = enterTaskInput.value;
+  spanDec.className = 'span-desc';
+  li.appendChild(spanDec);
+  const ul = getMyElement('#inner-tasks');
 
-        const checkBox = createMyElement('input');
-        checkBox.type = 'checkbox';
-        checkBox.name = 'checkbox';
-        checkBox.className = 'check-box';
-        li.prepend(checkBox);
+  const checkBox = createMyElement('input');
+  checkBox.type = 'checkbox';
+  checkBox.name = 'checkbox';
+  checkBox.className = 'check-box';
+  li.prepend(checkBox);
 
-        const dots = createMyElement('span');
-        dots.innerHTML = '⋮';
-        dots.className = 'dot-line';
-        li.appendChild(dots);
+  const dots = createMyElement('span');
+  dots.innerHTML = '⋮';
+  dots.className = 'dot-line';
+  li.appendChild(dots);
 
-        checkBox.addEventListener('change', (e) => {
-          if (e.target.checked) {
-            data.completed = true;
-            li.classList.add('over-line');
-            const key = data.index;
-            localStorage.setItem(key, JSON.stringify(data));
-            li.classList.add('over-line');
+  dots.addEventListener('click', () => {
+    if (tasks.length > 0) {
+      tasks.map((task) => {
+        if (task.description === spanDec.innerHTML) {
+          if (dots.innerHTML === '⋮') {
+            dots.innerHTML = '&#x1F4BE;';
+            spanDec.contentEditable = 'true';
+            spanDec.addEventListener('input', () => {
+              task.description = spanDec.textContent;
+              localStorage.setItem('tasks', JSON.stringify(tasks));
+            });
           } else {
-            data.completed = false;
-            li.classList.remove('over-line');
-            const key = data.index;
-            localStorage.setItem(key, JSON.stringify(data));
-            li.classList.remove('over-line');
+            dots.innerHTML = '⋮';
+            spanDec.contentEditable = 'false';
           }
-        });
-        if (data.completed === true) {
-          li.classList.add('over-line');
-          checkBox.checked = true;
-          ul.prepend(li);
-        } else {
-          li.classList.remove('over-line');
-          checkBox.checked = false;
-          ul.prepend(li);
         }
-      }
+        return task;
+      });
     }
   });
+
+  checkBox.addEventListener('change', (e) => {
+    if (tasks.length > 0) {
+      tasks.map((task) => {
+        if (task.description === spanDec.innerHTML) {
+          if (checkBox.checked) {
+            task.completed = true;
+            dots.innerHTML = '&#128465;';
+            spanDec.classList.add('over-line');
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            dots.addEventListener('click', () => {
+              dots.innerHTML = '&#128465;';
+              if (task.completed === true) {
+                const conIndex = tasks.indexOf(task);
+                tasks.splice(conIndex, 1);
+                e.target.parentNode.remove();
+                tasks.forEach((task, i) => {
+                  task.index = i + 1;
+                  localStorage.setItem('tasks', JSON.stringify(tasks));
+                });
+              }
+            });
+          } else {
+            task.completed = false;
+            dots.innerHTML = '⋮';
+            spanDec.classList.remove('over-line');
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+          }
+        }
+        return task;
+      });
+    }
+  });
+
+  ul.appendChild(li);
+
+  addtoLocal();
 }
+
+taskForm.addEventListener('submit', printTasks);
 
 export default printTasks;

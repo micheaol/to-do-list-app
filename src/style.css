@@ -56,22 +56,34 @@ input {
   position: absolute;
   right: 8%;
   font-size: 200%;
+  cursor: pointer;
+  border: none;
+  top: 8%;
 }
 
 #clear-all {
   text-align: center;
   font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+
+.span-desc {
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .dot-line {
   position: absolute;
   right: 8%;
   top: 35%;
+  font-size: 125%;
+  cursor: pointer;
 }
 
-#root h1::after {
-  content: '\1F5D8';
-  margin-left: 38%;
+#reload-icon {
+  margin-left: 35%;
+  cursor: pointer;
 }
 
 .check-box {
@@ -83,13 +95,17 @@ input {
   position: relative;
 }
 
+.reloading {
+  color: black;
+}
+
 @media screen and (min-width: 765px) {
   #root {
     max-width: 55%;
   }
 
-  #root h1::after {
-    margin-left: 62%;
+  #reload-icon {
+    margin-left: 60%;
   }
 }
 
