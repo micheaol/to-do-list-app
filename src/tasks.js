@@ -27,10 +27,11 @@ function getUserData() {
   } else {
     // newTask.index = enterTasks.value.length;
     tasks.push(newTask);
+    
     addtoLocal();
     // window.location.reload();
   }
-  printTasks()
+  // printTasks()
 }
 
 enterIcon.addEventListener('click', getUserData);

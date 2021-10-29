@@ -1,9 +1,12 @@
 import printTasks from './getTasks.js';
+import addtoLocal from './addToLocal.js';
 
-// printTasks();
+printTasks();
 const threeDotLine = document.querySelectorAll('.dot-line');
 const taskCheckBox = document.querySelectorAll('.check-box');
 const deleteAllTasks = document.querySelector('#clear-all');
+const reloadTasks = document.querySelector('#reload-icon');
+const allRoot = document.querySelector('#inner-tasks');
 
 function changeToBin(e) {
   if (e.target.parentNode.className === 'over-line') {
@@ -20,7 +23,7 @@ function deleteSelectedTasks(e) {
     if (key) {
       const dataDele = JSON.parse(localStorage.getItem(key));
       if (dataDele.completed === true) {
-        const key = dataDele.description.length;
+        const key = dataDele.index;
         localStorage.removeItem(key);
       }
     }
@@ -44,3 +47,7 @@ deleteAllTasks.addEventListener('click', deleteSelectedTasks);
 taskCheckBox.forEach((checking) => {
   checking.addEventListener('change', changeToBin);
 });
+
+reloadTasks.addEventListener('click', (e)=>{
+  allRoot.classList.toggle('reloading')
+})

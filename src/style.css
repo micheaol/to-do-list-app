@@ -92,6 +92,10 @@ input {
   position: relative;
 }
 
+.reloading {
+  color: black;
+}
+
 @media screen and (min-width: 765px) {
   #root {
     max-width: 55%;

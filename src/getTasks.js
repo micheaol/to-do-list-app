@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
-import tasks from './tasks.js';
+// import tasks from './tasks.js';
+// import addtoLocal from './addToLocal.js';
 
 function getMyElement(para) {
   return document.querySelector(para);
@@ -10,7 +11,6 @@ function createMyElement(para) {
 }
 
 function printTasks() {
- 
   Object.keys(localStorage).forEach((key) => {
     if (key) {
       const data = JSON.parse(localStorage.getItem(key));
@@ -18,7 +18,7 @@ function printTasks() {
         const li = createMyElement('li');
         const spanDec = createMyElement('span');
         spanDec.innerHTML = data.description;
-        spanDec.className = 'span-desc'
+        spanDec.className = 'span-desc';
         li.appendChild(spanDec);
         const ul = getMyElement('#inner-tasks');
 
@@ -33,17 +33,32 @@ function printTasks() {
         dots.className = 'dot-line';
         li.appendChild(dots);
 
+        dots.addEventListener('click', () => {
+          if (dots.innerHTML === '⋮') {
+            dots.innerHTML = '&#x1F4BE;';
+            spanDec.contentEditable = 'true';
+            const key = data.index;
+            spanDec.addEventListener('input', () => {
+              localStorage.setItem(key, JSON.stringify(data));
+              data.description = spanDec.innerHTML;
+            });
+          } else {
+            dots.innerHTML = '⋮';
+            spanDec.contentEditable = 'true';
+          }
+        });
+
         checkBox.addEventListener('change', (e) => {
           if (e.target.checked) {
             data.completed = true;
             li.classList.add('over-line');
-            const key = data.description.length;
+            const key = data.index;
             localStorage.setItem(key, JSON.stringify(data));
             li.classList.add('over-line');
           } else {
             data.completed = false;
             li.classList.remove('over-line');
-            const key = data.description.length;
+            const key = data.index;
             localStorage.setItem(key, JSON.stringify(data));
             li.classList.remove('over-line');
           }
@@ -58,7 +73,6 @@ function printTasks() {
           checkBox.checked = false;
           ul.prepend(li);
         }
-        
       }
     }
   });
