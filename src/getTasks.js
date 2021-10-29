@@ -1,6 +1,8 @@
 /* eslint-disable import/no-cycle */
 // import tasks from './tasks.js';
-// import addtoLocal from './addToLocal.js';
+import addtoLocal from './addToLocal.js';
+
+import tasks from './tasks';
 
 function getMyElement(para) {
   return document.querySelector(para);
@@ -12,6 +14,7 @@ function createMyElement(para) {
 
 const enterTaskBtn = getMyElement('#enter-icon');
 const enterTaskInput = getMyElement('#enter-tasks');
+const taskForm = getMyElement('#add-task-form');
 
 function printTasks(e) {
   e.preventDefault();
@@ -33,58 +36,66 @@ function printTasks(e) {
   dots.className = 'dot-line';
   li.appendChild(dots);
 
-  // dots.addEventListener('click', () => {
-  //   Object.keys(localStorage).forEach((key) => {
-  //     if (key) {
-  //       const data = JSON.parse(localStorage.getItem(key));
-  //       if (dots.innerHTML === '⋮') {
-  //         dots.innerHTML = '&#x1F4BE;';
-  //       }
-  //     }
-  //   });
-  //   if (dots.innerHTML === '⋮') {
-  //     // dots.innerHTML = '&#x1F4BE;';
-  //     // spanDec.contentEditable = 'true';
-  //     // const key = data.description.length;
-  //     // spanDec.addEventListener('input', () => {
-  //     //   localStorage.setItem(key, JSON.stringify(data));
-  //     //   data.description = spanDec.innerHTML;
-  //     // });
-  //   } else {
-  //     dots.innerHTML = '⋮';
-  //     spanDec.contentEditable = 'true';
-  //   }
-  // });
+  dots.addEventListener('click', (e) => {
+    if (tasks.length > 0) {
+      tasks.map((task) => {
+        if (task.description === spanDec.innerHTML) {
+          if (dots.innerHTML === '⋮') {
+            dots.innerHTML = '&#x1F4BE;';
+            spanDec.contentEditable = 'true';
+            spanDec.addEventListener('input', () => {
+              task.description = spanDec.innerHTML;
+              localStorage.setItem('tasks', JSON.stringify(tasks));
+            });
+          } else {
+            dots.innerHTML = '⋮';
+            spanDec.contentEditable = 'false';
+          }
+        }
+      });
+    }
+  });
 
-  // checkBox.addEventListener('change', (e) => {
-  //   if (e.target.checked) {
-  //     // data.completed = true;
-  //     // li.classList.add('over-line');
-  //     // const key = data.description.length;
-  //     // localStorage.setItem(key, JSON.stringify(data));
-  //     // li.classList.add('over-line');
-  //   } else {
-  //     // data.completed = false;
-  //     // li.classList.remove('over-line');
-  //     // const key = data.description.length;
-  //     // localStorage.setItem(key, JSON.stringify(data));
-  //     // li.classList.remove('over-line');
-  //   }
-  // });
-  // if (data.completed === true) {
-  //   li.classList.add('over-line');
-  //   checkBox.checked = true;
-  //   dots.innerHTML = '&#128465;';
-  //   ul.prepend(li);
-  // } else {
-  //   li.classList.remove('over-line');
-  //   checkBox.checked = false;
-  //   ul.prepend(li);
-  // }
-  ul.prepend(li);
+  checkBox.addEventListener('change', (e) => {
+    if (tasks.length > 0) {
+      tasks.map((task) => {
+        if (task.description === spanDec.innerHTML) {
+          if (checkBox.checked) {
+            task.completed = true;
+            dots.innerHTML = '&#128465;';
+            spanDec.classList.add('over-line');
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            dots.addEventListener('click', () => {
+              dots.innerHTML = '&#128465;';
+              
+              if (task.completed === true) {
+                let conIndex = tasks.indexOf(task)
+                tasks.splice(conIndex, 1)
+                e.target.parentNode.remove();
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+
+               
+              }
+            });
+          } else {
+            task.completed = false;
+            dots.innerHTML = '⋮';
+            spanDec.classList.remove('over-line');
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+          }
+        }
+      });
+    }
+    
+  });
+
+  ul.appendChild(li);
+  // console.log(tasks)
+  
+  addtoLocal();
 }
 
-enterTaskBtn.addEventListener('click', printTasks);
+taskForm.addEventListener('submit', printTasks);
 
 // printTasks();
 

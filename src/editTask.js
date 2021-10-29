@@ -1,40 +1,77 @@
-// import getUserData from './getTasks.js';
+// function getMyElement(para) {
+//   return document.querySelector(para);
+// }
 
-// const threeDotLine = document.querySelectorAll('.dot-line');
-// // const editDot = document.querySelector('.dot-line');
-// const editTable = document.querySelector('.span-desc');
-// // function to edit the description:
+// function createMyElement(para) {
+//   return document.createElement(para);
+// }
 
-// function editTaskDesc(e) {
+// function showTasks() {
 //   Object.keys(localStorage).forEach((key) => {
-//     if(key){
+//     if (key) {
 //       const data = JSON.parse(localStorage.getItem(key));
-//       if(data){
-    
+//       if (data) {
+//         const li = createMyElement('li');
+//         const spanDec = createMyElement('span');
+//         spanDec.innerHTML = data.description;
+//         spanDec.className = 'span-desc';
+//         li.appendChild(spanDec);
+//         const ul = getMyElement('#inner-tasks');
+
+//         const checkBox = createMyElement('input');
+//         checkBox.type = 'checkbox';
+//         checkBox.name = 'checkbox';
+//         checkBox.className = 'check-box';
+//         li.prepend(checkBox);
+
+//         const dots = createMyElement('span');
+//         dots.innerHTML = '⋮';
+//         dots.className = 'dot-line';
+//         li.appendChild(dots);
+
+//         dots.addEventListener('click', () => {
+//           if (dots.innerHTML === '⋮') {
+//             dots.innerHTML = '&#x1F4BE;';
+//             spanDec.contentEditable = 'true';
+//             const key = data.description.length;
+//             spanDec.addEventListener('input', () => {
+//               localStorage.setItem(key, JSON.stringify(data));
+//               data.description = spanDec.innerHTML;
+//             });
+//           } else {
+//             dots.innerHTML = '⋮';
+//             spanDec.contentEditable = 'true';
+//           }
+//         });
+
+//         checkBox.addEventListener('change', (e) => {
+//           if (e.target.checked) {
+//             data.completed = true;
+//             li.classList.add('over-line');
+//             const key = data.description.length;
+//             localStorage.setItem(key, JSON.stringify(data));
+//             li.classList.add('over-line');
+//           } else {
+//             data.completed = false;
+//             li.classList.remove('over-line');
+//             const key = data.description.length;
+//             localStorage.setItem(key, JSON.stringify(data));
+//             li.classList.remove('over-line');
+//           }
+//         });
+//         if (data.completed === true) {
+//           li.classList.add('over-line');
+//           checkBox.checked = true;
+//           dots.innerHTML = '&#128465;';
+//           ul.prepend(li);
+//         } else {
+//           li.classList.remove('over-line');
+//           checkBox.checked = false;
+//           ul.prepend(li);
+//         }
 //       }
 //     }
 //   });
 // }
 
-
-
-// // threeDotLine.forEach((editDot) => {
-// //   editDot.addEventListener('click', editTaskDesc);
-// // });
-
-// // e.target.previousSibling.contentEditable = 'true';
-// // console.log(e.target.previousSibling.innerHTML.length);
-
-// // e.target.previousSibling.innerHTML = 'test';
-// // Object.keys(localStorage).forEach((key) => {
-// //   if (key) {
-// //     const dataDele = JSON.parse(localStorage.getItem(key));
-// //     if (dataDele) {
-// //       const key = dataDele.description.length;
-// //       editTable.addEventListener('input', () => {
-// //         localStorage.setItem(key, JSON.stringify(dataDele));
-// //         dataDele.description = editTable.textContent;
-// //       });
-// //     }
-// //   }
-// // });
+// export default showTasks;

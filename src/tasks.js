@@ -29,8 +29,7 @@ function getUserData(e) {
   } else {
     // newTask.index = enterTasks.value.length;
     tasks.push(newTask);
-    
-    addtoLocal();
+
     // window.location.reload();
   }
   // printTasks()
