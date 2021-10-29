@@ -10,5 +10,4 @@ deleteAllTasks.addEventListener('click', () => {
   window.location.reload();
 });
 
-
 window.onload = showToUi;
