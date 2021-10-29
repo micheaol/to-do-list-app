@@ -6,7 +6,6 @@ import printTasks from "./getTasks.js";
     tasks.forEach((elem) => {
       const key = tasks.length;
       localStorage.setItem(key, JSON.stringify(elem));
-      
     });
     // printTasks()
   }

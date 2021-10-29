@@ -4,4 +4,4 @@ import printTasks from './getTasks.js';
 import editTask from './editTask';
 import addToLocal from './addToLocal.js'
 
-printTasks();
+// printTasks();

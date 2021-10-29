@@ -6,7 +6,7 @@ const threeDotLine = document.querySelectorAll('.dot-line');
 const taskCheckBox = document.querySelectorAll('.check-box');
 const deleteAllTasks = document.querySelector('#clear-all');
 const reloadTasks = document.querySelector('#reload-icon');
-const allRoot = document.querySelector('#inner-tasks');
+const allRoot = document.querySelector('#parent-div');
 
 function changeToBin(e) {
   if (e.target.parentNode.className === 'over-line') {
@@ -48,6 +48,9 @@ taskCheckBox.forEach((checking) => {
   checking.addEventListener('change', changeToBin);
 });
 
-reloadTasks.addEventListener('click', (e)=>{
-  allRoot.classList.toggle('reloading')
-})
+reloadTasks.addEventListener('click', (e) => {
+  allRoot.textContent = '';
+  window.setTimeout(() => {
+    allRoot.reload(true);
+  }, 200);
+});
