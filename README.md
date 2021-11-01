@@ -18,6 +18,10 @@ Additional description about the project and its features.
     -HTML
     -CSS
     -JS
+    
+ ## Live Demo
+
+[Live Demo Link](https://micheaol-to-do-app.netlify.app/)
 
 To get a local copy up and running follow these simple example steps.
                 
